@@ -1,0 +1,5 @@
+#!/bin/sh
+mount -t proc none /proc
+mount -t sysfs none /sys
+echo "=== UML is ready ==="
+exec /sbin/tini /bin/sh +m
