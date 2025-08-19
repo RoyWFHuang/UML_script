@@ -1,3 +1,7 @@
+#!/bin/bash
+
+. config
+
 sudo apt install build-essential libncurses-dev flex bison
 sudo apt install xz-utils wget ca-certificates bc
 sudo apt install fakeroot
@@ -17,8 +21,10 @@ echo "LABEL=ALPINE_ROOT / auto defaults 1 1" >> rootfs/etc/fstab
 cp init rootfs/
 wget -O rootfs/sbin/tini https://github.com/krallin/tini/releases/download/v0.19.0/tini-static
 chmod +x rootfs/sbin/tini
+echo "cp $UML_KERNEL_PATH/$UML_KERNEL_NAME ./"
+cp $UML_KERNEL_PATH/$UML_KERNEL_NAME ./
 
-./linux umid=uml0 \
+./$UML_KERNEL_NAME umid=uml0 \
     rootfstype=hostfs rootflags=$(pwd)/rootfs \
     rw mem=64M init=/bin/busybox \
     --install -s && exit
