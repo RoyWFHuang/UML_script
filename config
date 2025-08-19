@@ -1,2 +1,2 @@
 UML_KERNEL_NAME=linux
-UML_KERNEL_PATH=../linux
+UML_KERNEL_SRC_PATH=../linux

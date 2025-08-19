@@ -21,8 +21,7 @@ echo "LABEL=ALPINE_ROOT / auto defaults 1 1" >> rootfs/etc/fstab
 cp init rootfs/
 wget -O rootfs/sbin/tini https://github.com/krallin/tini/releases/download/v0.19.0/tini-static
 chmod +x rootfs/sbin/tini
-echo "cp $UML_KERNEL_PATH/$UML_KERNEL_NAME ./"
-cp $UML_KERNEL_PATH/$UML_KERNEL_NAME ./
+cp $UML_KERNEL_SRC_PATH/$UML_KERNEL_NAME ./
 
 ./$UML_KERNEL_NAME umid=uml0 \
     rootfstype=hostfs rootflags=$(pwd)/rootfs \
