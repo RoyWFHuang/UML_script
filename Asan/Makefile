@@ -5,6 +5,7 @@ KDIR := $(PWD)/../../linux/
 # i/home/roy/src_code/00.project/linux/app/.. M=/home/roy/src_code/00.project/linux/app
 
 default:
+# 	gcc -fsanitize=kernel-address -S Kasan.c -o Kasan.s -I$(KDIR)/include;
 	$(MAKE) -C $(KDIR) M=$(PWD) modules ARCH=um
 
 all: default

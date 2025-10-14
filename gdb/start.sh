@@ -4,6 +4,8 @@
 
 GDB_ENV=$(pwd)
 
+./create.sh
+
 echo "current = $GDB_ENV"
 cp gdbinit.config gdbinit
 cd $UML_ROOT_PATH

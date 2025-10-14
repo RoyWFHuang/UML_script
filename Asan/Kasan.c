@@ -19,22 +19,15 @@ static void kasan_leak_test(void)
 static void kasan_heap_underflow(void)
 {
     char *ptr = kmalloc(16, GFP_KERNEL);
-    // printk(KERN_ALERT "ptr addr = %p\n", ptr);
-    // printk(KERN_ALERT "ptr -10 addr = %p(%px)\n", (ptr - 10), ptr - 10);
-    // printk(KERN_ALERT "ptr real addr = %px\n", kasan_reset_tag(ptr));
-    // printk(KERN_ALERT "ptr -10 real addr = %px\n", kasan_reset_tag(ptr - 10));
-    ptr = (ptr - 10);
-    // printk(KERN_ALERT "ptr addr = %p\n", ptr);
+    ptr = (ptr - 5);
     ptr[0] = 'a';
-    char *dup = kstrdup(ptr, GFP_KERNEL);
-    printk(KERN_ALERT "dup str = %s\n", dup);
+    printk(KERN_ALERT "dup str = %s\n", ptr);
 }
 
 static int Kasan_init(void)
 {
     kasan_heap_underflow();
     kasan_leak_test();
-    // kfree(freeptr);
     return 0;
 }
 

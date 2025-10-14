@@ -1,0 +1,9 @@
+# Asan test setting
+/Asan/Asan_test
+/Asan/Asan_test_debug
+
+# gdb setting
+/gdb/gdbinit
+#
+linux
+/rootfs/
