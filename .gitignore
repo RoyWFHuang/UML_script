@@ -4,6 +4,8 @@
 
 # gdb setting
 /gdb/gdbinit
+
 #
-linux
-/rootfs/
+UML_helper.md
+/uml_root
+/linux

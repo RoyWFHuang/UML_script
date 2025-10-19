@@ -4,13 +4,13 @@
 
 GDB_ENV=$(pwd)
 
-./create.sh
+# ./create.sh
 
 echo "current = $GDB_ENV"
 cp gdbinit.config gdbinit
 cd $UML_ROOT_PATH
 
 # set rootfs
-sed -i 's|FULLPATH|'"$PWD"'|' $GDB_ENV/gdbinit
+sed -i 's|FULLPATH|'"$PWD/$UML_INSTALL_DIR"'|' $GDB_ENV/gdbinit
 cd $UML_KERNEL_SRC_PATH/
 gdb -q -x $GDB_ENV/gdbinit
